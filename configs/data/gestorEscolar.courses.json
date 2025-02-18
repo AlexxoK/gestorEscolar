@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "67b3fe3856f93b46e24d4d90"
+  },
+  "name": "Taller",
+  "description": "Curso de Informática",
+  "teacher": {
+    "$oid": "67b3f9ce56f93b46e24d4d81"
+  },
+  "createdAt": {
+    "$date": "2025-02-18T03:27:52.421Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-18T03:27:52.421Z"
+  }
+}]

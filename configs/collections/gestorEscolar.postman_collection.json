@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "bf24fc4f-aac0-4da9-b8a1-dbd1273edb70",
+		"name": "gestorEscolar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41656904"
+	},
+	"item": [
+		{
+			"name": "Alumno",
+			"item": [
+				{
+					"name": "registarse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carlos",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Orozco",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "OrozcoK",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "orozco@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "orozcoK027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/api/register/student",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"register",
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carlos",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "Orozco",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "OrozcoK",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "orozco@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "orozcoK027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AsignarCrusos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZmZkNTZmOTNiNDZlMjRkNGRhMCIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk3NDIsImV4cCI6MTczOTg2MDU0Mn0._WTajzAByQBGvqmsRWFotSCtlhJXXLLF5Abg2Y4__80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "67b3fffd56f93b46e24d4da0",
+									"type": "text"
+								},
+								{
+									"key": "courseId",
+									"value": "67b3fe3856f93b46e24d4d90",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/students/addCourse",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"students",
+								"addCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZDRmNTZmOTNiNDZlMjRkNGQ4YSIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk1MTcsImV4cCI6MTczOTg2MDMxN30.ZukHm9raYNKq54v8Dmb_01ahuAi3UP_z_Da4agUjaqU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Luis",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Monzón",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "MonzonK",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "monzon@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "monzonk027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/students/student/67b3fd4f56f93b46e24d4d8a",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"students",
+								"student",
+								"67b3fd4f56f93b46e24d4d8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZDRmNTZmOTNiNDZlMjRkNGQ4YSIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk1MTcsImV4cCI6MTczOTg2MDMxN30.ZukHm9raYNKq54v8Dmb_01ahuAi3UP_z_Da4agUjaqU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "67a9783f269fb04c8d31f8a6",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "courseId",
+									"value": "67a976bc9ad53a1100e80f68",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/students/student/67b3fd4f56f93b46e24d4d8a",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"students",
+								"student",
+								"67b3fd4f56f93b46e24d4d8a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profesor",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Monterroso",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "AlexxoK",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alexxo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "alexxo027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "87654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/api/register/teacher",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"register",
+								"teacher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "Monterroso",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "AlexxoK",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "alexxo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "alexxo027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "87654321",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Alexander",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Estrada",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "monterxK",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "monterx@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "monterx027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/teacher/67b3f9ce56f93b46e24d4d81",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"teacher",
+								"67b3f9ce56f93b46e24d4d81"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Alexander",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Estrada",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "monterxK",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "monterx@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "monterx027",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/teacher/teacher/67b3f9ce56f93b46e24d4d81",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teacher",
+								"teacher",
+								"67b3f9ce56f93b46e24d4d81"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cursos",
+			"item": [
+				{
+					"name": "Agregar Curso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTk3NDBlMGIzMWI0ZjY1YzExMzMzNSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3MzkxNTg5NjIsImV4cCI6MTczOTE2OTc2Mn0.LZuwMKa4_pPTna6Rv7I-PJMHS601Oj0EXndBQ3eC_Q8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sociales",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Curso de Sociales",
+									"type": "text"
+								},
+								{
+									"key": "teacher",
+									"value": "67a96f2ca1fde07a81156cb2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/courses/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"courses",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

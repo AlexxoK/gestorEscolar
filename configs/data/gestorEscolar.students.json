@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "67b3fffd56f93b46e24d4da0"
+  },
+  "name": "Carlos",
+  "surname": "Orozco",
+  "username": "OrozcoK",
+  "email": "orozco@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$fkadDLyp3WkQFAqb6+4hNg$WnTu4hVbWAYqCyTyZfwh2QaLulClnrjDKAG6R9xK/Qc",
+  "phone": "12345678",
+  "role": "STUDENT_ROLE",
+  "status": true,
+  "courses": [
+    {
+      "$oid": "67b3fe3856f93b46e24d4d90"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-02-18T03:35:25.913Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-18T03:36:07.558Z"
+  }
+}]

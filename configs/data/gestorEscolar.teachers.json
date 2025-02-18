@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "67b3fd0556f93b46e24d4d87"
+  },
+  "name": "Diego",
+  "surname": "Monterroso",
+  "username": "AlexxoK",
+  "email": "alexxo@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$rsmFyLCMHKExjQlpdGePag$9duGa4UzhlNZd01iyS/mGd5I3OrwrLnunbbzPRVGvmg",
+  "phone": "87654321",
+  "role": "TEACHER_ROLE",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-18T03:22:45.036Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-18T03:22:45.036Z"
+  }
+}]
