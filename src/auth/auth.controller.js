@@ -1,75 +1,180 @@
-import Teacher from '../teacher/teacher.model.js';
-import Student from '../student/student.model.js';
-import { checkPassword, encrypt } from '../utils/encrypt.js';
-import { generateJwt } from '../utils/jwt.js';
+import Teacher from '../teachers/teacher.model.js';
+import Student from '../students/student.model.js';
+import { hash, verify } from 'argon2';
+import { generarJWT } from '../helpers/generate-jwt.js';
+
+export const loginTeacher = async (req, res) => {
+
+    const { email, password, username } = req.body;
+
+    try {
+
+        const lowerEmail = email ? email.toLowerCase() : null;
+        const lowerUsername = username ? username.toLowerCase() : null;
+
+        const teacher = await Teacher.findOne({
+            $or: [{ email: lowerEmail }, { username: lowerUsername }]
+        });
+
+        if (!teacher) {
+            return res.status(400).json({
+                msg: 'Incorrect credentials - email does not exist in the database!'
+            });
+        }
+
+        if (!teacher.estado) {
+            return res.status(400).json({
+                msg: 'Teacher does not exist in the database!'
+            });
+        }
+
+        const validPassword = await verify(teacher.password, password);
+        if (!validPassword) {
+            return res.status(400).json({
+                msg: 'The password is incorrect!'
+            });
+        }
+
+        const token = await generarJWT(teacher.id);
+
+        return res.status(200).json({
+            msg: 'Login OK!',
+            teacherDetails: {
+                username: teacher.username,
+                token: token,
+            }
+        })
+
+    } catch (e) {
+
+        console.log(e);
+
+        return res.status(500).json({
+            message: "Server error!",
+            error: e.message
+        })
+    }
+}
+
+export const loginStudent = async (req, res) => {
+
+    const { email, password, username } = req.body;
+
+    try {
+
+        const lowerEmail = email ? email.toLowerCase() : null;
+        const lowerUsername = username ? username.toLowerCase() : null;
+
+        const student = await Student.findOne({
+            $or: [{ email: lowerEmail }, { username: lowerUsername }]
+        });
+
+        if (!student) {
+            return res.status(400).json({
+                msg: 'Incorrect credentials - email does not exist in the database!'
+            });
+        }
+
+        if (!student.estado) {
+            return res.status(400).json({
+                msg: 'Student does not exist in the database!'
+            });
+        }
+
+        const validPassword = await verify(student.password, password);
+        if (!validPassword) {
+            return res.status(400).json({
+                msg: 'The password is incorrect!'
+            });
+        }
+
+        const token = await generarJWT(student.id);
+
+        return res.status(200).json({
+            msg: 'Login OK!',
+            studentDetails: {
+                username: student.username,
+                token: token,
+            }
+        })
+
+    } catch (e) {
+
+        console.log(e);
+
+        return res.status(500).json({
+            message: "Server error!",
+            error: e.message
+        })
+    }
+}
 
 export const registerTeacher = async (req, res) => {
     try {
-        const { name, surname, username, email, password, phone } = req.body;
+        const data = req.body;
 
-        const existingUser = await Teacher.findOne({ email });
-        if (existingUser) {
-            return res.status(400).send({ message: 'El email ya está registrado' });
-        }
+        const encryptedPassword = await hash(data.password);
 
-        const hashedPassword = await encrypt(password);
-        const newTeacher = new Teacher({ 
-            name, surname, username, email, password: hashedPassword, phone, role: 'TEACHER_ROLE', status: true 
+        const teacher = await Teacher.create({
+            name: data.name,
+            surname: data.surname,
+            username: data.username,
+            email: data.email,
+            phone: data.phone,
+            password: encryptedPassword,
+            role: data.role,
+        })
+
+        return res.status(201).json({
+            message: "Teacher registered successfully!",
+            teacherDetails: {
+                teacher: teacher.email
+            }
         });
 
-        await newTeacher.save();
-        res.status(201).send({ message: 'Profesor registrado exitosamente', teacher: newTeacher });
     } catch (error) {
-        res.status(500).send({ message: 'Error en el registro', error });
+
+        console.log(error);
+
+        return res.status(500).json({
+            message: "Teacher registration failed!",
+            error: err.message
+        })
+
     }
-};
+}
 
 export const registerStudent = async (req, res) => {
     try {
-        const { name, surname, username, email, password, phone } = req.body;
+        const data = req.body;
 
-        const existingUser = await Student.findOne({ email });
-        if (existingUser) {
-            return res.status(400).send({ message: 'El email ya está registrado' });
-        }
+        const encryptedPassword = await hash(data.password);
 
-        const hashedPassword = await encrypt(password);
-        const newStudent = new Student({ 
-            name, surname, username, email, password: hashedPassword, phone, role: 'STUDENT_ROLE', status: true 
+        const student = await Student.create({
+            name: data.name,
+            surname: data.surname,
+            username: data.username,
+            email: data.email,
+            phone: data.phone,
+            password: encryptedPassword,
+            role: data.role,
+        })
+
+        return res.status(201).json({
+            message: "Student registered successfully!",
+            studentDetails: {
+                student: student.email
+            }
         });
 
-        await newStudent.save();
-        res.status(201).send({ message: 'Estudiante registrado exitosamente', student: newStudent });
     } catch (error) {
-        res.status(500).send({ message: 'Error en el registro', error });
+
+        console.log(error);
+
+        return res.status(500).json({
+            message: "Student registration failed!",
+            error: err.message
+        })
+
     }
-};
-
-export const login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-
-        let user = await Teacher.findOne({ email });
-        let role = 'TEACHER_ROLE';
-
-        if (!user) {
-            user = await Student.findOne({ email });
-            role = 'STUDENT_ROLE';
-        }
-
-        if (!user) {
-            return res.status(400).send({ message: 'Usuario o contraseña incorrectos' });
-        }
-
-        const validPassword = await checkPassword(user.password, password);
-        if (!validPassword) {
-            return res.status(400).send({ message: 'Usuario o contraseña incorrectos' });
-        }
-
-        const token = await generateJwt({ id: user._id.toString(), role });
-
-        res.send({ message: 'Inicio de sesión exitoso', token, role });
-    } catch (error) {
-        res.status(500).send({ message: 'Error en el login', error });
-    }
-};
+}

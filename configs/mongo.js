@@ -1,24 +1,35 @@
-import mongoose from "mongoose";
+'use strict';
 
-export const connectDB = async () => {
+import mongoose from 'mongoose';
+
+export const dbConnection = async () => {
     try {
-        console.log("ENV:", process.env.DB_SERVICE, process.env.DB_HOST, process.env.DB_PORT, process.env.DB_NAME);
-
-        const uri = `${process.env.DB_SERVICE}://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
-        
-        console.log("URI generada:", uri);
-
-        if (!uri) throw new Error("URI de MongoDB no definida.");
-
-        await mongoose.connect(uri, {
-            maxPoolSize: 50, 
-            serverSelectionTimeoutMS: 5000 
+        mongoose.connection.on('error', () => {
+            console.log('MongoDB | Could not be connected to MongoDB');
+            mongoose.disconnect();
+        });
+        mongoose.connection.on('connecting', () => {
+            console.log('MongoDB | Try connecting...');
+        });
+        mongoose.connection.on('connected', () => {
+            console.log('MongoDB | Connected to MongoDB');
+        });
+        mongoose.connection.on('open', () => {
+            console.log('MongoDB | Connected to database');
+            console.log("------------------------------------------");
+        });
+        mongoose.connection.on('reconnected', () => {
+            console.log('MongoDB | Reconnected to MongoDB');
+        });
+        mongoose.connection.on('disconnected', () => {
+            console.log('MongoDB | Disconnected');
         });
 
-        console.log("Conectado a MongoDB correctamente");
-
+        mongoose.connect(process.env.URI_MONGO, {
+            serverSelectionTimeoutMS: 5000,
+            maxPoolSize: 50,
+        });
     } catch (error) {
-        console.error("Error al conectar a la base de datos:", error.message);
-        process.exit(1);
+        console.log('Database connection failed', error);
     }
-};
+}

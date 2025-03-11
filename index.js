@@ -1,7 +1,15 @@
-import { initServer } from "./configs/server.js";
-import { config } from "dotenv";
-import { connectDB } from "./configs/mongo.js";
+import { config } from 'dotenv';
+import { initServer, createTeacher, createStudent, createDefaultCourse } from './configs/server.js';
 
-config()
-connectDB()
-initServer()
+config();
+
+const initializeServer = async () => {
+
+    await initServer();
+    await createTeacher();
+    await createStudent();
+    createDefaultCourse();
+
+};
+
+initializeServer();

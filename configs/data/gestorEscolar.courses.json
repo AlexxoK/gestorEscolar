@@ -1,16 +1,66 @@
 [{
   "_id": {
-    "$oid": "67b3fe3856f93b46e24d4d90"
+    "$oid": "67cf9c74aa84b342c728fd25"
   },
-  "name": "Taller",
-  "description": "Curso de Informática",
+  "name": "Alumnos sin curso",
+  "description": "Curso predeterminado para alumnos sin curso asignado.",
   "teacher": {
-    "$oid": "67b3f9ce56f93b46e24d4d81"
+    "$oid": "67cf74ff2ac54c9532b3130a"
   },
+  "students": [
+    {
+      "$oid": "67cf756c84e95865fe180459"
+    },
+    {
+      "$oid": "67cf756c84e95865fe180459"
+    }
+  ],
   "createdAt": {
-    "$date": "2025-02-18T03:27:52.421Z"
+    "$date": "2025-03-11T02:14:12.463Z"
   },
   "updatedAt": {
-    "$date": "2025-02-18T03:27:52.421Z"
+    "$date": "2025-03-11T02:18:22.565Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cfa2e58d0799e07f749178"
+  },
+  "name": "Curso de prueba",
+  "description": "Solamente se actualizará para prueba",
+  "teacher": {
+    "$oid": "67cf74ff2ac54c9532b3130a"
+  },
+  "students": [
+    {
+      "$oid": "67cf756c84e95865fe180459"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-11T02:41:41.701Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T02:41:41.701Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cfa97efacf3e98615d29bf"
+  },
+  "name": "Curso de prueba 2",
+  "description": "Solamente se actualizará para prueba 2",
+  "teacher": {
+    "$oid": "67cf74ff2ac54c9532b3130a"
+  },
+  "students": [
+    {
+      "$oid": "67cf756c84e95865fe180459"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-11T03:09:50.477Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T03:09:50.477Z"
   }
 }]

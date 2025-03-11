@@ -1,572 +1,459 @@
 {
 	"info": {
-		"_postman_id": "bf24fc4f-aac0-4da9-b8a1-dbd1273edb70",
+		"_postman_id": "472110ef-b2e8-45c1-be9d-49d618b8bda2",
 		"name": "gestorEscolar",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41656904"
 	},
 	"item": [
 		{
-			"name": "Alumno",
+			"name": "teachers",
 			"item": [
 				{
-					"name": "registarse",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Carlos",
-									"type": "text"
+					"name": "account profile",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Balán\",\r\n  \"surname\": \"Carranza\",\r\n  \"username\": \"CarranzaK\",\r\n  \"email\": \"carranzak@gmail.com\",\r\n  \"password\": \"carranzak027\",\r\n  \"phone\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "surname",
-									"value": "Orozco",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "OrozcoK",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "orozco@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "orozcoK027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12345678",
-									"type": "text"
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/auth/registerTeacher",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"auth",
+										"registerTeacher"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/api/register/student",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"register",
-								"student"
-							]
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"santosk@gmail.com\",\r\n  \"password\": \"santosk027\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/auth/loginTeacher",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"auth",
+										"loginTeacher"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTeachers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/teachers?limite=10&desde=0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"teachers"
+									],
+									"query": [
+										{
+											"key": "limite",
+											"value": "10"
+										},
+										{
+											"key": "desde",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Carlos",
-									"type": "text",
-									"disabled": true
+					"name": "courses",
+					"item": [
+						{
+							"name": "createCourse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzRmZjJhYzU0Yzk1MzJiMzEzMGEiLCJpYXQiOjE3NDE2NjA4ODcsImV4cCI6MTc0MTY2NDQ4N30.dulxCH77Te-h97N1Agiu7c3hTpUKV4mh0-4j_RAIr-c",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Curso de prueba 2\",\r\n    \"description\": \"Solamente se actualizará para prueba 2\",\r\n    \"teacherId\": \"67cf74ff2ac54c9532b3130a\",\r\n    \"students\": [\"67cf756c84e95865fe180459\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "surname",
-									"value": "Orozco",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "username",
-									"value": "OrozcoK",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "orozco@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "orozcoK027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12345678",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/courses/createCourse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"courses",
+										"createCourse"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/api/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AsignarCrusos",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZmZkNTZmOTNiNDZlMjRkNGRhMCIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk3NDIsImV4cCI6MTczOTg2MDU0Mn0._WTajzAByQBGvqmsRWFotSCtlhJXXLLF5Abg2Y4__80",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "studentId",
-									"value": "67b3fffd56f93b46e24d4da0",
-									"type": "text"
+						{
+							"name": "updateCourse",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzRmZjJhYzU0Yzk1MzJiMzEzMGEiLCJpYXQiOjE3NDE2NTY2MDgsImV4cCI6MTc0MTY2MDIwOH0.WArL0yO8CkpmKt5M_M5OWvEdnnw-Busw5S7ni21cOX8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Matemáticas Básicas\",\r\n    \"description\": \"Curso introductorio de matemáticas\",\r\n    \"teacherId\": \"67cf784084e95865fe18045d\",\r\n    \"students\": [\"67cf756c84e95865fe180459\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "courseId",
-									"value": "67b3fe3856f93b46e24d4d90",
-									"type": "text"
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/courses/updateCourse/67cf9cb5aa84b342c728fd2b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"courses",
+										"updateCourse",
+										"67cf9cb5aa84b342c728fd2b"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/students/addCourse",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"students",
-								"addCourse"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZDRmNTZmOTNiNDZlMjRkNGQ4YSIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk1MTcsImV4cCI6MTczOTg2MDMxN30.ZukHm9raYNKq54v8Dmb_01ahuAi3UP_z_Da4agUjaqU",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Luis",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "Monzón",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "MonzonK",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "monzon@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "monzonk027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12345678",
-									"type": "text"
+						{
+							"name": "deleteCourse",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzRmZjJhYzU0Yzk1MzJiMzEzMGEiLCJpYXQiOjE3NDE2NTY2MDgsImV4cCI6MTc0MTY2MDIwOH0.WArL0yO8CkpmKt5M_M5OWvEdnnw-Busw5S7ni21cOX8",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/courses/deleteCourse/67cf9d50c489d0270d106e3f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"courses",
+										"deleteCourse",
+										"67cf9d50c489d0270d106e3f"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/students/student/67b3fd4f56f93b46e24d4d8a",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"students",
-								"student",
-								"67b3fd4f56f93b46e24d4d8a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZDRmNTZmOTNiNDZlMjRkNGQ4YSIsInJvbGUiOiJTVFVERU5UX1JPTEUiLCJpYXQiOjE3Mzk4NDk1MTcsImV4cCI6MTczOTg2MDMxN30.ZukHm9raYNKq54v8Dmb_01ahuAi3UP_z_Da4agUjaqU",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "studentId",
-									"value": "67a9783f269fb04c8d31f8a6",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "courseId",
-									"value": "67a976bc9ad53a1100e80f68",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "getCoursesByTeacher",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzRmZjJhYzU0Yzk1MzJiMzEzMGEiLCJpYXQiOjE3NDE2NjA4ODcsImV4cCI6MTc0MTY2NDQ4N30.dulxCH77Te-h97N1Agiu7c3hTpUKV4mh0-4j_RAIr-c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/courses/getCoursesByTeacherId/67cf74ff2ac54c9532b3130a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"courses",
+										"getCoursesByTeacherId",
+										"67cf74ff2ac54c9532b3130a"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3001/students/student/67b3fd4f56f93b46e24d4d8a",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"students",
-								"student",
-								"67b3fd4f56f93b46e24d4d8a"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
 		{
-			"name": "Profesor",
+			"name": "students",
 			"item": [
 				{
-					"name": "registrar",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Diego",
-									"type": "text"
+					"name": "account profile",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Josue\",\r\n  \"surname\": \"Monterroso\",\r\n  \"username\": \"MonterrosoK\",\r\n  \"email\": \"monterrosok@gmail.com\",\r\n  \"password\": \"monterrosok027\",\r\n  \"phone\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "surname",
-									"value": "Monterroso",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "AlexxoK",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "alexxo@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "alexxo027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "87654321",
-									"type": "text"
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/auth/registerStudent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"auth",
+										"registerStudent"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/api/register/teacher",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"register",
-								"teacher"
-							]
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"alexxok@gmail.com\",\r\n  \"password\": \"alexxok027\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/auth/loginStudent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"auth",
+										"loginStudent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateStudent",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzU2Yzg0ZTk1ODY1ZmUxODA0NTkiLCJpYXQiOjE3NDE2NjM5NTQsImV4cCI6MTc0MTY2NzU1NH0.2JF1PnqXPJzRZ3nBPh9mC4nAmrey0KhLWyiq9d4CutE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Prueba\",\r\n  \"surname\": \"Prueba\",\r\n  \"username\": \"PruebaK\",\r\n  \"email\": \"pruebak@gmail.com\",\r\n  \"password\": \"pruebak027\",\r\n  \"phone\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/students/updateStudent/67cfa837c265707684d280a8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"students",
+										"updateStudent",
+										"67cfa837c265707684d280a8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteStudent",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzU2Yzg0ZTk1ODY1ZmUxODA0NTkiLCJpYXQiOjE3NDE2NjM5NTQsImV4cCI6MTc0MTY2NzU1NH0.2JF1PnqXPJzRZ3nBPh9mC4nAmrey0KhLWyiq9d4CutE",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/students/deleteStudent/67cfa837c265707684d280a8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"students",
+										"deleteStudent",
+										"67cfa837c265707684d280a8"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Diego",
-									"type": "text",
-									"disabled": true
+					"name": "courses",
+					"item": [
+						{
+							"name": "studentInCourse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzU2Yzg0ZTk1ODY1ZmUxODA0NTkiLCJpYXQiOjE3NDE2NjIyODcsImV4cCI6MTc0MTY2NTg4N30.y_W32gbOY00ls2cMWPYgY5t8ZjDIGOOJ-Nmu71jWQ4M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"studentId\": \"67cf756c84e95865fe180459\",\r\n    \"courseId\": \"67cfa2e58d0799e07f749178\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "surname",
-									"value": "Monterroso",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "username",
-									"value": "AlexxoK",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "alexxo@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "alexxo027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "87654321",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/students/studentInCourse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"students",
+										"studentInCourse"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3001/api/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Alexander",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "Estrada",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "monterxK",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "monterx@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "monterx027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12345678",
-									"type": "text"
+						{
+							"name": "getStudentCourses",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NmNzRmZjJhYzU0Yzk1MzJiMzEzMGEiLCJpYXQiOjE3NDE2NjA4ODcsImV4cCI6MTc0MTY2NDQ4N30.dulxCH77Te-h97N1Agiu7c3hTpUKV4mh0-4j_RAIr-c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3001/gestorEscolar/v1/students/getStudentCourses/67cf756c84e95865fe180459",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"gestorEscolar",
+										"v1",
+										"students",
+										"getStudentCourses",
+										"67cf756c84e95865fe180459"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3001/teacher/teacher/67b3f9ce56f93b46e24d4d81",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"teacher",
-								"teacher",
-								"67b3f9ce56f93b46e24d4d81"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmOWNlNTZmOTNiNDZlMjRkNGQ4MSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3Mzk4NDg2MDcsImV4cCI6MTczOTg1OTQwN30.3SguSIHp1cPSzPQVOLzB5m94-0crd4DCiW0muXC-DQY",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Alexander",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "Estrada",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "monterxK",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "monterx@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "monterx027",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12345678",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3001/teacher/teacher/67b3f9ce56f93b46e24d4d81",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"teacher",
-								"teacher",
-								"67b3f9ce56f93b46e24d4d81"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "cursos",
-			"item": [
-				{
-					"name": "Agregar Curso",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTk3NDBlMGIzMWI0ZjY1YzExMzMzNSIsInJvbGUiOiJURUFDSEVSX1JPTEUiLCJpYXQiOjE3MzkxNTg5NjIsImV4cCI6MTczOTE2OTc2Mn0.LZuwMKa4_pPTna6Rv7I-PJMHS601Oj0EXndBQ3eC_Q8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Sociales",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Curso de Sociales",
-									"type": "text"
-								},
-								{
-									"key": "teacher",
-									"value": "67a96f2ca1fde07a81156cb2",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3626/courses/create",
-							"host": [
-								"localhost"
-							],
-							"port": "3626",
-							"path": [
-								"courses",
-								"create"
-							]
-						}
-					},
-					"response": []
+					]
 				}
 			]
 		}

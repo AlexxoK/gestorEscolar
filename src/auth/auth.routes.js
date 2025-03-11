@@ -1,10 +1,36 @@
 import { Router } from 'express';
-import { registerTeacher, registerStudent, login } from '../auth/auth.controller.js';
+import { loginTeacher, loginStudent, registerTeacher, registerStudent } from './auth.controller.js';
+import { registerTeacherValidator, registerStudentValidator, loginValidator } from '../middlewares/validator.js';
+import { deleteFileOnError } from '../middlewares/delete-file-on-error.js';
 
-const api = Router();
+const router = Router();
 
-api.post('/register/teacher', registerTeacher);
-api.post('/register/student', registerStudent);
-api.post('/login', login);
+router.post(
+    '/loginTeacher',
+    loginValidator,
+    deleteFileOnError,
+    loginTeacher
+);
 
-export default api;
+router.post(
+    '/loginStudent',
+    loginValidator,
+    deleteFileOnError,
+    loginStudent
+);
+
+router.post(
+    '/registerTeacher',
+    registerTeacherValidator,
+    deleteFileOnError,
+    registerTeacher
+);
+
+router.post(
+    '/registerStudent',
+    registerStudentValidator,
+    deleteFileOnError,
+    registerStudent
+);
+
+export default router;
